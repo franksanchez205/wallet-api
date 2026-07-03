@@ -1,0 +1,34 @@
+﻿### Java ###
+target/
+*.class
+*.jar
+*.war
+*.nar
+*.ear
+*.log
+*.gz
+*.tar
+*.zip
+*.tgz
+hs_err_pid*
+replay_pid*
+
+### Maven ###
+billetera/target/
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+### IDE ###
+.idea/
+*.iml
+.vscode/
+.settings/
+.project
+.classpath
+bin/
+*.swp
+*~
+
+### OS ###
+.DS_Store
+Thumbs.db

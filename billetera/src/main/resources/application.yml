@@ -1,0 +1,41 @@
+server:
+  port: 9092
+  servlet:
+    context-path: /api/v1/
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/billetera?createDatabaseIfNotExist=true&useSSL=false&serverTimezone=UTC
+    username: root
+    password: 12345
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+
+mailgun:
+  base-url: https://api.mailgun.net/v3
+  domain: sandboxe06237698f8f4965aac48d8a78398093.mailgun.org
+  from: noreply@sandboxe06237698f8f4965aac48d8a78398093.mailgun.org
+  api-key: ${MAILGUN_API_KEY}
+
+feign:
+  client:
+    config:
+      mailgun-client:
+        connect-timeout: 5000
+        read-timeout: 10000
+
+security:
+  jwt:
+    secret-key: ${JWT_SECRET:default-secret-key-change-in-production}
+
+app:
+  cron:
+    expiracion-transacciones: "0 */5 * * * *"
+  transaccion:
+    expiracion-minutos: 2
